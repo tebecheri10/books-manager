@@ -1,7 +1,11 @@
 
+import UpdateBookForm from "../components/UpdateBookForm/UpdateBookForm"
+
 const UpdateBook = () => {
   return (
-    <div>UpdateBook</div>
+    <div>
+      <UpdateBookForm/>
+    </div>
   )
 }
 

@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
 import { createNewBook } from '../../features/bookSlice';
@@ -9,6 +10,7 @@ import './newBookForm.scss'
 
 const NewBookForm: FC = () => {
 
+    const navigate = useNavigate()
     const dispatch = useDispatch()
   
     const handleSubmit = async(e:any) =>{
@@ -24,6 +26,7 @@ const NewBookForm: FC = () => {
         await dispatch( createNewBook({ title:title, desc:desc, cover:cover }) as any);
 
         form.reset()
+        navigate("/")
     }
   
     return (

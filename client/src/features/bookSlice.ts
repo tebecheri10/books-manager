@@ -4,6 +4,7 @@ import { bookType } from "../typings/book";
 interface BookInitialState {
   booksList: bookType[];
   createdBook: bookType | {};
+  updateBookContext: bookType
 }
 
 const initialState: BookInitialState = {
@@ -11,6 +12,12 @@ const initialState: BookInitialState = {
   createdBook: {
     title: "default",
     desc: "default",
+    cover:
+      "https://s3-us-west-2.amazonaws.com/s.cdpn.io/387928/book%20placeholder.png",
+  },
+  updateBookContext:{
+    title: "",
+    desc: "",
     cover:
       "https://s3-us-west-2.amazonaws.com/s.cdpn.io/387928/book%20placeholder.png",
   },
@@ -76,7 +83,9 @@ export const deleteBook = createAsyncThunk(
   }
 );
 
-export const updateBookById = createAsyncThunk("DeleteBook",async ({bookData, bookId}:{bookData: bookType, bookId:number}) => {
+export const updateBookById = createAsyncThunk(
+  "UpdateBook", // Cambiado el nombre de la acción a "UpdateBook"
+  async ({ bookData, bookId }: { bookData: bookType; bookId: string }) => {
     const UPDATE_BOOK_URL = `http://localhost:5001/api/books/${bookId}`;
 
     const config = {
@@ -112,6 +121,9 @@ const bookSlice = createSlice({
     fillNewBookDate: (state, action) => {
       state.createdBook = action.payload;
     },
+    setBookToUpdate: (state, action) =>{
+      state.updateBookContext = action.payload
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(getBooks.fulfilled, (state, action) => {
@@ -129,5 +141,5 @@ const bookSlice = createSlice({
   },
 });
 
-export const { fillNewBookDate } = bookSlice.actions;
+export const { fillNewBookDate, setBookToUpdate } = bookSlice.actions;
 export default bookSlice.reducer;

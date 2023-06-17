@@ -1,4 +1,5 @@
 .bookCard__container {
+  max-height: 535px;
     @media ( max-width: 680px){
         width: 90%!important;
     }
@@ -8,9 +9,14 @@
     object-fit: fill;
     aspect-ratio: 2/3;
   }
+  .bookCard__title{
+    white-space: nowrap; 
+    overflow: hidden;  
+    text-overflow: ellipsis;
+  }
   .bookCard__description{
-    white-space: nowrap;       /* Evita el salto de línea */
-    overflow: hidden;          /* Oculta el texto que se desborda */
+    white-space: nowrap;   
+    overflow: hidden;  
     text-overflow: ellipsis;
   }
   .bookCard__buttonsRow {
