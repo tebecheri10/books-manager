@@ -1,10 +1,11 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateBookById, setBookToUpdate } from '../../features/bookSlice';
+import { RootState } from "../../store/store";
 
 
 import './updateBookForm.scss';
@@ -15,9 +16,9 @@ const UpdateBookForm: FC = () => {
 
     const { id } = useParams()
     const dispatch = useDispatch()
-    const bookState = useSelector((state:any)=> state.books)
+    const bookState = useSelector((state:RootState)=> state.books)
   
-    const handleSubmit = async(e:any) =>{
+    const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault()
 
         const form = e.target as HTMLFormElement

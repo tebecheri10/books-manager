@@ -3,6 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleModal } from '../../features/alertModalSlice'
 import { deleteBook } from '../../features/bookSlice';
+import { RootState } from '../../store/store';
 
 import './alertModal.scss'
 
@@ -10,7 +11,7 @@ function AlertModal() {
 
   const dispatch = useDispatch()
 
-  const modalState = useSelector((state:any)=> state.alertModal)
+  const modalState = useSelector((state: RootState)=> state.alertModal)
 
   const handleDelete = async() =>{
     await dispatch(deleteBook(modalState.bookToDeleteId) as any)

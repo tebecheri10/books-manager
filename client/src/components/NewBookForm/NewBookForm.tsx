@@ -13,12 +13,11 @@ const NewBookForm: FC = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
   
-    const handleSubmit = async(e:any) =>{
+    const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault()
 
         const form = e.target as HTMLFormElement
         const formData = new FormData(form);
-        
         const title = formData.get('title') as string;
         const desc = formData.get('desc') as string;
         const cover = formData.get('cover') as string;
@@ -26,6 +25,7 @@ const NewBookForm: FC = () => {
         await dispatch( createNewBook({ title:title, desc:desc, cover:cover }) as any);
 
         form.reset()
+        
         navigate("/")
     }
   
