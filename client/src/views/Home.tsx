@@ -1,22 +1,11 @@
-import { FC, useEffect } from 'react'
-import BookCard from '../components/BookCard'
-import { useSelector, useDispatch } from 'react-redux'
-import { getBooks } from '../features/bookSlice'
+import { FC } from 'react'
+import BookList from '../components/BookList/BookList'
 
 const Home: FC = () => {
 
- const dispatch =  useDispatch() 
- const bookState = useSelector(( state: any) => state.bookReducer)
-
-useEffect(()=>{
-  dispatch(getBooks() as any)
-}, [])
-
- console.log("bookState", bookState)
-
   return (
     <div>
-      <BookCard/>
+        <BookList/>
     </div>
   )
 }

@@ -1,9 +1,11 @@
 import {  configureStore } from '@reduxjs/toolkit';
-import bookReducer from '../features/bookSlice';
+import booksReducer from '../features/bookSlice';
+import alertModalReducer from '../features/alertModalSlice'
 
 const store = configureStore({
     reducer:{
-        bookReducer
+        books:booksReducer,
+        alertModal: alertModalReducer
     }
 })
 

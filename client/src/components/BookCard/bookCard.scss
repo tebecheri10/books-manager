@@ -1,0 +1,23 @@
+.bookCard__container {
+    @media ( max-width: 680px){
+        width: 90%!important;
+    }
+  .bookCard__image {
+    cursor: pointer;
+    max-height: 400px;
+    object-fit: fill;
+    aspect-ratio: 2/3;
+  }
+  .bookCard__description{
+    white-space: nowrap;       /* Evita el salto de línea */
+    overflow: hidden;          /* Oculta el texto que se desborda */
+    text-overflow: ellipsis;
+  }
+  .bookCard__buttonsRow {
+    display: flex;
+    justify-content: space-between;
+    .bookCard__button {
+      min-width: 120px;
+    }
+  }
+}
